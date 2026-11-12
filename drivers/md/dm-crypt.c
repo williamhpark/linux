@@ -1664,6 +1664,7 @@ retry:
 	clone->bi_end_io = crypt_endio;
 	clone->bi_ioprio = io->base_bio->bi_ioprio;
 	clone->bi_iter.bi_sector = cc->start + io->sector;
+	bio_clone_blkg_association(clone, io->base_bio);
 
 	remaining_size = size;
 
